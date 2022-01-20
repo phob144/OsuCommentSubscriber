@@ -5,11 +5,14 @@ using OsuCommentSubscriber;
 using OsuCommentSubscriber.Twitter;
 using System.Text;
 
+const string TWITTER_CONFIG_PATH = "twitterConfig.json";
 const string USER_IDS_PATH = "userIds.txt";
 const string LAST_COMMENT_TIMES_PATH = "lastCommentTimes.json";
-const string TWITTER_CONFIG_PATH = "twitterConfig.json";
 
 Console.Write("Initializing the twitter client... ");
+
+if (!File.Exists(TWITTER_CONFIG_PATH))
+    File.WriteAllText(TWITTER_CONFIG_PATH, "{}");
 
 var config = TwitterConfig.Read(TWITTER_CONFIG_PATH);
 var credentials = new SingleUserInMemoryCredentialStore()
@@ -33,6 +36,9 @@ var twitter = new TwitterContext(new SingleUserAuthorizer()
 Console.WriteLine("Done!");
 
 Console.Write("Initializing the comment subscriber... ");
+
+if (!File.Exists(USER_IDS_PATH))
+    File.WriteAllText(USER_IDS_PATH, "");
 
 var userIds = File.ReadAllLines(USER_IDS_PATH).Select(x => x.Trim()).ToList();
 var lastCommentTimes = new Dictionary<string, DateTime>();
@@ -88,14 +94,24 @@ subscriber.NewCommentsReceived += async (sender, e) =>
 
 Console.WriteLine("Done!");
 
-subscriber.Run(TimeSpan.FromSeconds(10));
+subscriber.Run(TimeSpan.FromMinutes(5));
 
 Console.WriteLine("Running...");
 
 
 
-// save last comment times on exit to avoid duplicate tweets after maintenance/crashes
+// watch for changes in the userIds.txt file, so users can be added dynamically
+var watcher = new FileSystemWatcher(".", USER_IDS_PATH)
+{
+    EnableRaisingEvents = true
+};
 
+watcher.Changed += (sender, e) =>
+{
+    subscriber.UserIds = File.ReadAllLines(USER_IDS_PATH).Select(x => x.Trim()).ToList();
+};
+
+// save last comment times on exit to avoid duplicate tweets after maintenance/crashes
 AppDomain.CurrentDomain.ProcessExit += (sender, e) =>
 {
     File.WriteAllText(LAST_COMMENT_TIMES_PATH, JsonConvert.SerializeObject(subscriber.LastCommentTimes));

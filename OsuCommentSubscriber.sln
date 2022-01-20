@@ -7,7 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OsuCommentSubscriber", "Osu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OsuCommentSubscriber.Twitter", "OsuCommentSubscriber.Twitter\OsuCommentSubscriber.Twitter.csproj", "{36BBA341-8343-475E-8AE9-1087D13764CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OsuCommentSubscriber.Testing", "OsuCommentSubscriber.Testing\OsuCommentSubscriber.Testing.csproj", "{BD1EAED0-E49D-483F-85D0-6422ACCC4FB4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BBB7E345-D792-47FE-A1DB-99FEFFB6BDEC}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +26,6 @@ Global
 		{36BBA341-8343-475E-8AE9-1087D13764CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36BBA341-8343-475E-8AE9-1087D13764CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36BBA341-8343-475E-8AE9-1087D13764CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD1EAED0-E49D-483F-85D0-6422ACCC4FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD1EAED0-E49D-483F-85D0-6422ACCC4FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD1EAED0-E49D-483F-85D0-6422ACCC4FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD1EAED0-E49D-483F-85D0-6422ACCC4FB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

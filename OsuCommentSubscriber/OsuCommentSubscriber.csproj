@@ -4,14 +4,20 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
+    <Authors>Phob</Authors>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="phantomjs\LICENSE.BSD" />
     <None Remove="phantomjs\phantomjs.exe" />
     <None Remove="phantomjs\script.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="phantomjs\LICENSE.BSD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="phantomjs\phantomjs.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
