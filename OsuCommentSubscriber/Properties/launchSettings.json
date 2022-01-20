@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Twitter": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\TheAngry\\source\\repos\\OsuCommentSubscriber\\OsuCommentSubscriber.Twitter\\bin\\Release\\net6.0\\OsuCommentSubscriber.Twitter.exe",
+      "workingDirectory": "C:\\Users\\TheAngry\\source\\repos\\OsuCommentSubscriber\\OsuCommentSubscriber.Twitter\\bin\\Release\\net6.0"
+    }
+  }
+}
